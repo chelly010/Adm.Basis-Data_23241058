@@ -1,0 +1,122 @@
+-- Nama  : Chelly Satya Carsa Thesar
+-- NIM   : 23241058
+-- Kelas : PTI 4 B
+-- =================================== --
+
+-- membuat database
+CREATE DATABASE topup_mobileegend;
+
+-- menggunakan database
+USE topup_mobilelegend;
+
+-- melihat tabel
+DESCRIBE karyawan;
+DESCRIBE produk;
+DESCRIBE reseller;
+DESCRIBE player;
+DESCRIBE supplier;
+DESCRIBE transaksi;
+
+-- melihat data pada tabel
+SELECT *FROM karyawan;
+SELECT *FROM reseller;
+SELECT *FROM player;
+SELECT *FROM produk;
+SELECT *FROM transaksi;
+
+-- membuat data pada tabel
+
+-- mmebuat data karyawan
+INSERT INTO karyawan (NIK,nama, tempat_lahir, tanggal_lahir, jenis_kelamin, alamat, no_tlpn, email, usia)
+VALUES	('527105300700001', 'Fajar Dewantara', 'Gunung Sari', '1997-01-20', 'laki-laki',
+		'Gunung Sari', '087860002633', 'fjrdwantara@gmail.com', '29'),
+		('527105300703301', 'Ananda Risky', 'Pagutan', '1999-06-10',  'laki-laki',
+        'Pagutan', '087860002634', 'riskyananda@gmail.com', '30'),
+		('527105308800001', 'Rahmat Hidayat', 'Bengkel', '1998-09-13', 'laki-laki',
+        'Bengkel', '087860002635', 'rahmat.hidayat@gmail.com', '27'),
+		('527105300702401', 'Septiani Putri', 'Sekarbela', '1998-05-20', 'perempuan',
+        'Sekarbela', '087860002636', 'septiani.putri@gmail.com', '26'),
+		('527105300789301', 'Siska Ramayana', 'Mataram', '1995-08-20', 'perempuan',
+        'Mataram', '087860002637', 'siska.ramayana@gmail.com', '32');
+        
+-- membuat data player
+INSERT INTO player (nickname, id_player, no_tlpn, email)
+VALUES	('Player1', 'P001', '087860002643', 'player1@gmail.com'),
+		('Player2', 'P002', '087860002644', 'player2@gmail.com'),
+		('Player3', 'P003', '087860002645', 'player3@gmail.com'),
+		('Player4', 'P004', '087860002646', 'player4@gmail.com'),
+		('Player5', 'P005', '087860002647', 'player5@gmail.com');
+
+-- membuat data produk
+INSERT INTO produk (id_produk, diamond, weekly_diamond_past, twilight_past, harga_produk)
+VALUES	('P001', '500', '100',  '50', 1000000),
+		('P002', '1000', '200', '100', 2500000),
+		('P003', '1500', '300', '150', 3500000),
+		('P004', '2000', '400', '200', 2000000),
+		('P005', '2500', '500', '250', 2500000);
+        
+-- membuat data supplier
+INSERT INTO supplier (nama, id_supplier, alamat, no_tlpn, email)
+VALUES	('Moonton A', 'S001', 'Jl. Supplier A, Mataram', '087860002648', 'MoontonA@gmail.com'),
+		('Moonton B', 'S002', 'Jl. Supplier B, Mataram', '087860002649', 'MoontonB@gmail.com'),
+		('Moonton C', 'S003', 'Jl. Supplier C, Mataram', '087860002650', 'MoontonC@gmail.com'),
+		('Moonton D', 'S004', 'Jl. Supplier D, Mataram', '087860002651', 'MoontonD@gmail.com'),
+		('Moonton E', 'S005', 'Jl. Supplier E, Mataram', '087860002652', 'MoontonE@gmail.com');
+
+-- membuat data reseller
+INSERT INTO reseller (nama, id_reseller, alamat, no_tlpn, email)
+VALUES	('Reseller A', 'R001', 'Jl. Reseller A, Mataram', '087860002638', 'resellerA@gmail.com'),
+		('Reseller B', 'R002', 'Jl. Reseller B, Mataram', '087860002639', 'resellerB@gmail.com'),
+		('Reseller C', 'R003', 'Jl. Reseller C, Mataram', '087860002640', 'resellerC@gmail.com'),
+		('Reseller D', 'R004', 'Jl. Reseller D, Mataram', '087860002641', 'resellerD@gmail.com'),
+		('Reseller E', 'R005', 'Jl. Reseller E, Mataram', '087860002642', 'resellerE@gmail.com');
+
+-- Membuat data transaksi
+-- transaksi player
+INSERT INTO transaksi (id_player,id_produk,Produk, total, tanggal_pemesanan, pesanan_melalui, status)
+VALUES	('P001', 'P001', 'Diamond 100', '27000', '2025-04-18', 'store', 'success'),
+		('P002', 'P002', 'Weakly Diamond Past 2x', '55000', '2025-02-16', 'store', 'success');
+
+-- transaksi karyawan
+INSERT INTO transaksi (NIK, nama,id_supplier, id_produk,Produk, total, tanggal_pemesanan, pesanan_melalui, status)
+VALUES	('527105300700001', 'Fajar Dewantara','S001', 'P005', 'Diamond 5000000 + Weekly Diamond past 5x',
+		'22000000', '2025-04-18', 'moonton', 'success');
+
+-- transaksi reseller
+INSERT INTO transaksi (id_reseller, id_produk,Produk, total, tanggal_pemesanan, pesanan_melalui, status)
+VALUES	('R001', 'P003', 'Diamond 8000000 + Weekly Diamond past 50x', '22000000', '2025-04-18', 'store', 'success'),
+		('R002', 'P004', 'Diamond 9000000 + Twilight past 100x', '26000000', '2025-04-18', 'store', 'success');
+        
+        
+        
+-- MEMBUAT 10 QUERY  SELECT dari DATA BASE YANG SUDAH DI BUAT
+-- (1) mengambil 1 kolom (nama) dari tabel karyawan
+SELECT nama FROM karyawan;
+
+-- (2) mengambil lebih dari 1 kolom (NIK, nama, dan Alamat) dari kolom karyawan
+SELECT NIK, nama, alamat FROM karyawan;
+
+-- (3) mengambil seluruh kolom pada tabel player
+SELECT * FROM player;
+
+-- PREFIX dan ALIAS
+-- (4) Menggunakan PREFIX nama tabel untuk kolom nama_reseler  dari tabel produk
+SELECT reseller.nama FROM reseller;
+
+-- (5) Menggunakan nama database dan tabel sebagai PREFIX untuk kolom tanggal pemesanan
+SELECT topup_mobilelegend.transaksi.tanggal_pemesanan FROM transaksi;
+
+-- (6) Menggunakan nama database dan tabel sebagai PREFIX untuk kolom ID_player, produk, dan total
+SELECT topup_mobilelegend.transaksi.id_player, produk, total FROM transaksi;
+
+-- (7) Mengganti sementara nama kolom nama_supplier dengan ALIAS
+SELECT nama AS NS FROM supplier;
+
+-- (8) Mengganti sementara nama kolom nama_supplier dan alamat dengan ALIAS
+SELECT nama AS NS , alamat AS ALMT FROM supplier;
+
+-- (9) membuat kombinasi PREFIX dan 1 ALIAS dari database, tabel produk kolom diamond
+SELECT topup_mobilelegend.produk.diamond AS DM FROM produk;
+
+-- (10) membuat kombinasi PREFIX dan 4 ALIAS dari tabel karyawan kolom nama, tempat_lahir, dan tanggal_lahir
+SELECT topup_mobilelegend.karyawan.nama AS NM, jenis_kelamin AS JK, tempat_lahir AS Tmpt_LH, tanggal_lahir AS Tgl_LH FROM karyawan;
